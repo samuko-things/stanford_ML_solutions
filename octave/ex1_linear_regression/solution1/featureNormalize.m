@@ -1,0 +1,56 @@
+function [X_norm, mu, sigma] = featureNormalize(X)
+##function [X_norm, X_min, X_max] = featureNormalize(X)
+
+%FEATURENORMALIZE Normalizes the features in X 
+%   FEATURENORMALIZE(X) returns a normalized version of X where
+%   the mean value of each feature is 0 and the standard deviation
+%   is 1. This is often a good preprocessing step to do when
+%   working with learning algorithms.
+
+% You need to set these values correctly
+X_norm = X;
+mu = zeros(1, size(X, 2));
+sigma = zeros(1, size(X, 2));
+
+##X_min = zeros(1, size(X, 2));
+##X_max = zeros(1, size(X, 2));
+
+% ====================== YOUR CODE HERE ======================
+% Instructions: First, for each feature dimension, compute the mean
+%               of the feature and subtract it from the dataset,
+%               storing the mean value in mu. Next, compute the 
+%               standard deviation of each feature and divide
+%               each feature by it's standard deviation, storing
+%               the standard deviation in sigma. 
+%
+%               Note that X is a matrix where each column is a 
+%               feature and each row is an example. You need 
+%               to perform the normalization separately for 
+%               each feature. 
+%
+% Hint: You might find the 'mean' and 'std' functions useful.
+%       
+
+% compute the mean and std of the datas and update it
+for count = 1:length(mu)
+  mu(count) = mean(X(:,count));
+  sigma(count) = std(X(:,count));
+endfor
+
+for count = 1:length(mu)
+  X_norm(:,count) = (X_norm(:,count)-mu(count))./sigma(count);
+endfor
+
+
+##for count = 1:length(X_min)
+##  X_min(count) = min(X(:,count));
+##  X_max(count) = max(X(:,count));
+##endfor
+##
+##for count = 1:length(X_min)
+##  X_norm(:,count) = (X_norm(:,count)-X_min(count))./X_max(count);
+##endfor
+
+% ============================================================
+
+end
