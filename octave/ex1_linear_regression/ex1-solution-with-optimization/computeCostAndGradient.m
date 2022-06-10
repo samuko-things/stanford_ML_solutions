@@ -1,4 +1,4 @@
-function [J grad] = computeCostAndGradient(X, y, theta)
+function [cost grad] = computeCostAndGradient(X, y, theta)
 % Initialize some useful values
 m = length(y); % number of training examples
 X = [ones(m,1) X]'; % add ones to X and transpose it
@@ -6,7 +6,7 @@ y = y';
 
 
 % You need to return the following variables correctly 
-J = 0;
+cost = 0;
 grad = zeros(size(theta));
 
 % ====================== YOUR CODE HERE ======================
@@ -15,7 +15,7 @@ grad = zeros(size(theta));
 
 h = theta'*X;
 
-J = sum( (h-y).^2 )/(2*m);
+cost = sum( (h-y).^2 )/(2*m);
 
 grad = (X*(h-y)')./m;
 
