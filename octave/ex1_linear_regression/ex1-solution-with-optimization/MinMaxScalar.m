@@ -1,4 +1,4 @@
-function X_norm = featureNormalize(X)
+function [X_norm, X_min, X_max] = MinMaxScalar(X)
   
 X_norm = X;
 X_min = zeros(size(X, 2), 1);
