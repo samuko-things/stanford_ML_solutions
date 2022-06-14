@@ -97,17 +97,11 @@ while ~isempty(email_contents)
     %       str2). It will return 1 only if the two strings are equivalent.
     %
 
-
-
-
-
-
-
-
-
-
     % =============================================================
 
+    check = strcmp(str, vocabList);
+    index_in_vocabList = find(check==1);
+    word_indices = [word_indices ; index_in_vocabList];
 
     % Print to screen, ensuring that the output lines are not too long
     if (l + length(str) + 1) > 78
@@ -118,6 +112,7 @@ while ~isempty(email_contents)
     l = l + length(str) + 1;
 
 end
+
 
 % Print footer
 fprintf('\n\n=========================\n');
